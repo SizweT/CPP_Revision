@@ -9,7 +9,7 @@ class Employee{
         double salary;
 
     public:
-        Employee(string n, int id, double s): name(n), employeeID(id), salary(s) {}
+        Employee(const string &n, int id, double s): name(n), employeeID(id), salary(s) {}
 
         void displayEmployee() const {
             cout << "Employee Name: " << name << endl;
@@ -24,7 +24,7 @@ class Lecturer : public Employee {
         string subject;
 
     public:
-        Lecturer(string n, int id, double s, string sub) : Employee(n, id, s), subject(sub) {}
+        Lecturer(const string &n, int id, double s, const string &sub) : Employee(n, id, s), subject(sub) {}
 
         void displayLecturer() const {
             displayEmployee();
@@ -37,7 +37,7 @@ class Administrator : public Employee {
     private:
         string department;
     public:
-        Administrator(string n, int id, double s, string dept) : Employee(n, id, s), department(dept) {}
+        Administrator(const string &n, int id, double s, const string &dept) : Employee(n, id, s), department(dept) {}
         void displayAdministrator() const {
             displayEmployee();
             cout << "Department: " << department << endl;
