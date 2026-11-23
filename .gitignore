@@ -1,0 +1,12 @@
+
+# Compiled C++ files
+*.exe
+*.o
+*.obj
+*.dll
+
+# VS Code local configuration
+.vscode/
+
+# Temporary files
+*.tmp
