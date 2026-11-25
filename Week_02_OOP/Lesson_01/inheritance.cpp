@@ -17,6 +17,12 @@ class Employee{
             cout << "Salary: R" << salary << endl;
         }
 
+        virtual void displayRole() const {
+            cout <<"I am an employee." << endl;
+        }
+
+        virtual ~Employee() = default; // Virtual destructor for proper cleanup of derived classes
+
 };
 
 class Lecturer : public Employee {
@@ -31,6 +37,9 @@ class Lecturer : public Employee {
             cout << "Subject : " << subject << endl;
             cout <<"\n------------------------------------------------\n";
         }
+        void displayRole() const override {
+            cout << "I am a lecturer." << endl;
+        }
 };
 
 class Administrator : public Employee {
@@ -43,12 +52,20 @@ class Administrator : public Employee {
             cout << "Department: " << department << endl;
             cout <<"\n------------------------------------------------\n";
         }
+        void displayRole() const override {
+            cout << "I am an administrator." << endl;
+        }
 };
 
 int main() {
     Lecturer lecturer("Dr. Smith", 12345, 75000.00, "Computer Science");
     Administrator administrator("Mr. Johnson", 67890, 80000.00, "Human Resources");
-    lecturer.displayLecturer();
-    administrator.displayAdministrator();
+    
+    Employee* employee1 = &lecturer;
+    Employee* employee2 = &administrator;
+    
+    employee1->displayRole();
+    employee2->displayRole();
+    
     return 0;
 }   
