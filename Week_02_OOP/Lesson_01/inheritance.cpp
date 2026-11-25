@@ -57,15 +57,27 @@ class Administrator : public Employee {
         }
 };
 
+class Researcher : public Employee {
+    private:
+        string researchArea;
+    public:
+        Researcher(const string &n, int id, double s, const string &area) : Employee(n,id,s), researchArea(area) {}
+        void displayRole() const override {
+            cout << "I am a researcher." << endl;
+        }
+};
+
 int main() {
     Lecturer lecturer("Dr. Smith", 12345, 75000.00, "Computer Science");
     Administrator administrator("Mr. Johnson", 67890, 80000.00, "Human Resources");
+    Researcher researcher("Dr. Brown", 54321, 90000.00, "Artificial Intelligence");
     
-    Employee* employee1 = &lecturer;
-    Employee* employee2 = &administrator;
+    Employee* employees[] = {&lecturer, &administrator, &researcher};
     
-    employee1->displayRole();
-    employee2->displayRole();
+    for (Employee* employee : employees) {
+        employee->displayRole();
+        cout << "\n------------------------------------------------\n";
+    }
     
     return 0;
 }   
